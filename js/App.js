@@ -10,9 +10,9 @@ export default () =>{
             <Router>
                <div>
                    <ul>
-                       <li><Link to="/">Counter</Link></li>
-                       <li><Link to="/message">Message</Link></li>
-                       <li><Link to="/todolist">TodoList</Link></li>
+                       <li><Link to="/" replace>Counter</Link></li>
+                       <li><Link to="/message" replace>Message</Link></li>
+                       <li><Link to="/todolist" replace>TodoList</Link></li>
                    </ul>
                    <Route component={Counter} path="/" exact></Route>
                    <Route component={Message} path="/message" exact></Route>
