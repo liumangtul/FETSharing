@@ -1,6 +1,8 @@
 /**
  * Reducers
  * */
+import {INCREMENT,DECREMENT,SHOW_MESSAGE} from "./action"
+
 let counter = (state = {count: 0}, action) => {
     switch (action.type) {
         case INCREMENT:

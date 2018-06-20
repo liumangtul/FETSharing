@@ -1,7 +1,8 @@
 //UI组件
-import {Component} from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux/index";
+import React,{Component} from "react"
+import {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+import {onMessage} from "../action"
 
 class Message extends Component {
     componentDidMount() {

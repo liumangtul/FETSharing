@@ -1,6 +1,7 @@
-import {Component} from "react";
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux/index";
+import React,{Component} from "react"
+import {connect} from "react-redux"
+import {bindActionCreators} from "redux"
+import {onIncrement,onDecrement} from "../action"
 
 /**
  * Components

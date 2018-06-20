@@ -1,12 +1,13 @@
-import {applyMiddleware, createStore} from "redux/index";
-import {createLogger} from "redux-logger";
-import thunk from "redux-thunk/index";
+import {applyMiddleware, createStore} from "redux"
+import {createLogger} from "redux-logger"
+import thunk from "redux-thunk"
+import reducer from './reducer'
 
 /**
  * Store
  * */
-let store = createStore(
-    reducers,
+export default createStore(
+    reducer,
     applyMiddleware(
         thunk,
         createLogger()
