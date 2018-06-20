@@ -5,13 +5,17 @@ import thunk from 'redux-thunk'
 import {Provider, connect} from 'react-redux'
 import {createLogger} from 'redux-logger'
 
-//常量
+/**
+ * 常量
+* */
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
 const SHOW_MESSAGE = "SHOW_MESSAGE";
 
 
-//Action Creators
+/**
+* Action Creators
+* */
 let onIncrement = () => {
     return {
         type: INCREMENT
@@ -28,40 +32,40 @@ let requestMessage = message => {
         type: SHOW_MESSAGE,
         message
     }
-}
+};
 
 let onMessage = () => {
     return dispatch => {
         return fetch('./js/data.json')
             .then(res => res.json())
             .then(json => {
-                console.log(json);
                 dispatch(requestMessage(json));
             })
 
     }
 }
 
-//Reducers
+/**
+* Reducers
+* */
 let counter = (state = {count: 0}, action) => {
     switch (action.type) {
         case INCREMENT:
             return {
                 ...state,
                 count: state.count + 1
-            }
+            };
         case DECREMENT:
             return {
                 ...state,
                 count: state.count - 1
-            }
+            };
         default:
             return state;
     }
 };
 
 let getMessage = (state = {msg: ''}, action) => {
-    console.log('get', state, action)
     switch (action.type) {
         case SHOW_MESSAGE:
             return {
@@ -71,14 +75,16 @@ let getMessage = (state = {msg: ''}, action) => {
         default:
             return state;
     }
-}
+};
 
 let reducers = combineReducers({
     counter,
     getMessage
 });
 
-//Store
+/**
+* Store
+* */
 let store = createStore(
     reducers,
     applyMiddleware(
@@ -87,7 +93,9 @@ let store = createStore(
     )
 );
 
-//Components
+/**
+* Components
+* */
 //UI组件
 class Counter extends Component {
     render() {
@@ -100,22 +108,6 @@ class Counter extends Component {
         )
     }
 }
-
-
-class Message extends Component {
-    componentDidMount() {
-        this.props.onMessage();
-    }
-
-    render() {
-        return (
-            <div>
-                {this.props.message.msg}
-            </div>
-        )
-    }
-}
-
 //容器组件
 let Counterup = connect(
     state => {
@@ -131,9 +123,26 @@ let Counterup = connect(
     })
 )(Counter);
 
+//UI组件
+class Message extends Component {
+    componentDidMount() {
+        this.props.onMessage();
+    }
+
+    render() {
+        return (
+            <div>
+                {this.props.message.msg}
+                <button onClick={this.props.onMessage}>Send</button>
+            </div>
+        )
+    }
+}
+
+
+//容器组件
 let Messageup = connect(
     state => {
-        console.log(state)
         return {
             message: state.getMessage
         }
@@ -145,7 +154,9 @@ let Messageup = connect(
     })
 )(Message);
 
-//Render
+/**
+* Render
+* */
 ReactDOM.render(
     <Provider store={store}>
         <div>
