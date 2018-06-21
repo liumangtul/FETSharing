@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {addTodo} from '../action';
 
 class AddTodo extends Component{
-    nextId = 10
     constructor(props){
         super(props);
         this.onAddTodo=this.onAddTodo.bind(this);
@@ -13,16 +12,18 @@ class AddTodo extends Component{
         const name = this.refs.inout.value;
         this.props.addTodo({
             name:name,
-            id:this.nextId++,
+            id:this.props.todos[this.props.todos.length-1].id + 1,
             completed:false
         });
     }
 
     render(){
         return(
-            <section>
-                <input type="text" ref="inout"/>
-                <button onClick={this.onAddTodo}>ENTER</button>
+            <section className="field">
+                <div className="ui huge input">
+                    <input type="text" ref="inout"/>
+                </div>
+                <button className="ui huge secondary submit button" onClick={this.onAddTodo}>ENTER</button>
             </section>
         )
     }
@@ -30,8 +31,9 @@ class AddTodo extends Component{
 
 export default connect(
     (state,props)=>{
+        console.log(state,props)
         return{
-
+            todos:state.todos
         }
     },
     (dispatch,props)=>({

@@ -11,9 +11,9 @@ class Counter extends Component {
     render() {
         return (
             <div>
-                {this.props.counter.count}
-                <button onClick={this.props.onIncrement}>Increment</button>
-                <button onClick={this.props.onDecrement}>Decrement</button>
+                <button className="ui olive button" onClick={this.props.onIncrement}>Increment</button>
+                <button className="ui olive button" onClick={this.props.onDecrement}>Decrement</button>
+                <h1>{this.props.counter.count}</h1>
             </div>
         )
     }

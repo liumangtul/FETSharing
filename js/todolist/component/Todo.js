@@ -11,10 +11,10 @@ class Todo extends Component{
             toggleTodo
         } = this.props;
         return(
-            <li>
+            <li className="ui green message">
                 <p>ID:{todo.id}, Name:{todo.name},<b style={{color:todo.completed?'red':'green'}}>isLock:{todo.completed}</b></p>
-                <button onClick={()=>{delTodo(todo.id)}}>Del</button>
-                <button onClick={()=>{toggleTodo(todo.id)}}>{todo.completed?'unLock':'lock'}</button>
+                <button className="ui olive button" onClick={()=>{delTodo(todo.id)}}>Del</button>
+                <button className="ui red button" onClick={()=>{toggleTodo(todo.id)}}>{todo.completed?'unLock':'lock'}</button>
             </li>
         )
     }

@@ -12,8 +12,8 @@ class Message extends Component {
     render() {
         return (
             <div>
-                {this.props.message.msg}
-                <button onClick={this.props.onMessage}>Send</button>
+                <button className="ui olive button" onClick={this.props.onMessage}>Send</button>
+                <h3>{this.props.message.msg}</h3>
             </div>
         )
     }

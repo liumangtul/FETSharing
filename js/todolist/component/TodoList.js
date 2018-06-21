@@ -13,7 +13,7 @@ class TodoList extends Component{
             <section>
                 <h1>Todo-List</h1>
                 <AddTodo/>
-                <ul>
+                <ul className="example">
                     {
                         todos.map((todo,index)=>{
                             return <Todo todo={todo} key={todo.id}/>
